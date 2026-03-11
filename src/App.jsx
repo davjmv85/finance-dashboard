@@ -183,7 +183,7 @@ function App() {
       ));
     } else {
       const nueva = await addTransaccion(transaccionData);
-      setTransaccionesList(prev => [...prev, nueva]);
+      setTransaccionesList(prev => [nueva, ...prev]);
     }
 
     setFormData(emptyForm);
