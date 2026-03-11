@@ -35,16 +35,8 @@ function App() {
   // Cargar transacciones desde Firebase al iniciar
   useEffect(() => {
     getTransacciones().then(data => {
-      if (data.length === 0) {
-        // Primera vez: subir datos iniciales a Firebase
-        Promise.all(initialTransacciones.map(t => addTransaccion(t))).then(results => {
-          setTransaccionesList(results);
-          setLoading(false);
-        });
-      } else {
-        setTransaccionesList(data);
-        setLoading(false);
-      }
+      setTransaccionesList(data);
+      setLoading(false);
     });
   }, []);
 
