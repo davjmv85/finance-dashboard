@@ -26,7 +26,7 @@ export async function getTransacciones() {
     const todos = allSnapshot.docs.map(d => ({ ...d.data(), firebaseId: d.id }));
     const idsConTimestamp = new Set(conTimestamp.map(t => t.firebaseId));
     const sinTimestamp = todos.filter(t => !idsConTimestamp.has(t.firebaseId));
-    return [...sinTimestamp, ...conTimestamp];
+    return [...conTimestamp, ...sinTimestamp];
   } catch {
     const snapshot = await getDocs(transaccionesRef);
     return snapshot.docs.map(d => ({ ...d.data(), firebaseId: d.id }));
